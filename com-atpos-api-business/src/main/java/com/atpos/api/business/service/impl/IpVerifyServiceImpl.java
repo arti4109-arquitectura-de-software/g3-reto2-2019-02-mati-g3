@@ -4,12 +4,14 @@ import com.atpos.api.business.service.IpVerifyService;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 @Service
+@Slf4j
 public class IpVerifyServiceImpl  implements IpVerifyService {
 
     private final int MAX_ATTEMPT = 3;
@@ -18,7 +20,7 @@ public class IpVerifyServiceImpl  implements IpVerifyService {
     public IpVerifyServiceImpl() {
         super();
         attemptsCache = CacheBuilder.newBuilder().
-                expireAfterWrite(1, TimeUnit.DAYS).build(new CacheLoader<String, Integer>() {
+                expireAfterWrite(1, TimeUnit.HOURS).build(new CacheLoader<String, Integer>() {
             public Integer load(String ip) {
                 return 0;
             }
@@ -45,7 +47,11 @@ public class IpVerifyServiceImpl  implements IpVerifyService {
     @Override
     public boolean isBlocked(String ip) {
         try {
-            return attemptsCache.get(ip) >= MAX_ATTEMPT;
+            boolean isBlocked = attemptsCache.get(ip) >= MAX_ATTEMPT;
+            if(isBlocked){
+                log.debug("The IP --> " + ip + " is Blocked");
+            }
+            return isBlocked;
         } catch (ExecutionException e) {
             return false;
         }

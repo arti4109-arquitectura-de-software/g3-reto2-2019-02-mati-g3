@@ -1,0 +1,60 @@
+
+CREATE DATABASE atpos
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1;
+
+
+
+CREATE USER atposadmin WITH
+	LOGIN
+	NOSUPERUSER
+	NOCREATEDB
+	NOCREATEROLE
+	INHERIT
+	NOREPLICATION
+	CONNECTION LIMIT -1
+	PASSWORD 'atpos1234';
+
+
+
+CREATE SCHEMA atpos AUTHORIZATION atposadmin;
+
+
+
+CREATE TABLE atpos."transaction" (
+	invoice_code varchar(255) NOT NULL,
+	company_code int8 NOT NULL,
+	branch_code int8 NOT NULL,
+	terminal_code int8 NOT NULL,
+	cashier_code int8 NULL,
+	iva_value numeric(20,2) NULL,
+	total_value numeric(20,2) NULL,
+	invoice_date date NULL,
+	start_date timestamp NULL DEFAULT now(),
+	modification_date timestamp NULL DEFAULT now(),
+	CONSTRAINT transaction_pk PRIMARY KEY (invoice_code, company_code, branch_code, terminal_code)
+);
+
+GRANT SELECT, UPDATE, INSERT ON atpos."transaction" TO atposadmin;
+
+
+
+
+CREATE TABLE atpos.item_sale (
+	company_code int8 NOT NULL,
+	branch_code int8 NOT NULL,
+	terminal_code int8 NOT NULL,
+	product_code varchar(255) NOT NULL,
+	quantity int8 NULL,
+	product_description varchar(255) NULL,
+	iva_value numeric(20,2) NULL,
+	total_value numeric(20,2) NULL,
+	start_date timestamp NULL DEFAULT now(),
+	modification_date timestamp NULL DEFAULT now(),
+	invoice_code int8 NOT NULL
+);
+
+GRANT SELECT, UPDATE, INSERT ON atpos.item_sale TO atposadmin;
+

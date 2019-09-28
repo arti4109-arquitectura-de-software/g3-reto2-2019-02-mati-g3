@@ -39,7 +39,7 @@ public class CustomRequestBodyAdviceAdapter extends RequestBodyAdviceAdapter {
 
         String ip = getClientIP();
 
-            if (ipVerifyServiceImpl.isBlocked(ip)) {
+        if (ipVerifyServiceImpl.isBlocked(ip)) {
             throw new IpInvalidityException("Blocked IP");
         }
 

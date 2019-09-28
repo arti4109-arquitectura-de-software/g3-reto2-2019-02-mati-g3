@@ -24,13 +24,13 @@ spring:
     hibernate:
       ddl-auto: none
 
-logging:
-  level:
-    org:
-      springframework:
-        web: DEBUG
-      hibernate:
-        SQL: DEBUG
-        type:
-          descriptor:
-            sql: TRACE
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        web: DEBUG
+#      hibernate:
+#        SQL: DEBUG
+#        type:
+#          descriptor:
+#            sql: TRACE
