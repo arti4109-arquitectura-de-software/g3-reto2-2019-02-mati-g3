@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Facturador ATpos</title>
+
+    <link rel="stylesheet" href="css/primitive.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery.tabletojson.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+    <div class="small-container"><br><br>
+
+        <div class="col-sm-12 col-xs-12">
+            <div id="iconoVerificador" class="circulo" style="margin-left: 90%"></div>
+            <h1>Facturador ATpos</h1>
+        </div>
+
+
+
+        <form>
+            <input id="item" type="text" placeholder="Item">
+        </form>
+
+        <h2>Factura</h2>
+        <div class="limiter">
+            <div class="container-table100">
+                <div class="wrap-table100">
+                    <div class="table100">
+                        <table id="factura">
+                            <thead>
+                                <tr class="table100-head">
+                                    <th class="column1">Código producto</th>
+                                    <th class="column2">Cantidad</th>
+                                    <th class="column3">Descripción</th>
+                                    <th class="column4">Precio</th>
+                                    <th class="column5">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div  class="modal-content">
+                <span class="close">&times;</span>
+                <p id="modalCon"></p>
+            </div>
+
+        </div>
+
+
+        <ul></ul><br><br>
+        <div class="col-sm-12 col-xs-12" style="margin-left: 34%">
+            <button id="btnLimpiar" class="btn btn-default" type="button">Limpiar<span
+                    class="glyphicon glyphicon-step-backward"></span></button>
+            <button id="btnComprar" class="btn btn-default" type="button">Efectuar Compra<span
+                    class="glyphicon glyphicon-step-forward"></span></button>
+        </div>
+
+    </div>
+
+    <script src="js/scripts.js"></script>
+
+</body>
+
+</html>
