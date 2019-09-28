@@ -1,0 +1,8 @@
+/home/stratio20/Documentos/repositorios/atpos-api/atpos-api-domain/src/main/java/com/atpos/api/domain/entity/ItemSale.java
+/home/stratio20/Documentos/repositorios/atpos-api/atpos-api-domain/src/main/java/com/atpos/api/domain/entity/key/TransactionKey.java
+/home/stratio20/Documentos/repositorios/atpos-api/atpos-api-domain/src/main/java/com/atpos/api/domain/dto/ResponseDTO.java
+/home/stratio20/Documentos/repositorios/atpos-api/atpos-api-domain/src/main/java/com/atpos/api/domain/entity/key/ItemSaleKey.java
+/home/stratio20/Documentos/repositorios/atpos-api/atpos-api-domain/src/main/java/com/atpos/api/domain/dto/transaction/TransactionDTO.java
+/home/stratio20/Documentos/repositorios/atpos-api/atpos-api-domain/src/main/java/com/atpos/api/domain/dto/transaction/ItemSaleDTO.java
+/home/stratio20/Documentos/repositorios/atpos-api/atpos-api-domain/src/main/java/com/atpos/api/domain/dto/StatusDTO.java
+/home/stratio20/Documentos/repositorios/atpos-api/atpos-api-domain/src/main/java/com/atpos/api/domain/entity/Transaction.java
