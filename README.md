@@ -9,7 +9,7 @@ Reto 2 - arti4109-Arquitectura-de-Software
 ###  Propósito
 Verificar la Integridad del cuerpo de la petición y limitar el acceso temporal a peticiones provenientes de IPs que generan fallas de forma repetida. 
 
-###  Propósito
+###  Resultados esperados
 Se procesan solo las peticiones que poseen una carga útil con una suma de verificación igual a la enviada desde el cliente. Y a su vez se bloquean aquellas IPs que realicen más de 3 intentos fallidos de envío de transacciones.
 
 ###  Recursos Requeridos
@@ -35,5 +35,15 @@ Tener la capacidad de procesar sólo aquellas transacciones cuya integridad de s
 
 ![alt text](https://github.com/arti4109-arquitectura-de-software/g3-reto2-2019-02-mati-g3/blob/master/Diagrama%20Modulo%20Seguridad%20Transacciones.png)
 
+## Experimento 2: Verificación de disponibilidad en la facturación sin conexión al servidor ATpos
+                         
+###  Propósito
+Verificar la la disponibilidad de la funcionalidad de facturación aún en la situación en que no se presenta conexión con el servidor. 
+
+###  Resultados esperados
+Se continúan realizando el registro de facturas aun cuando la conexión con el servidor remoto no se realice.
+
+###  Recursos Requeridos
+SO: Windows 10 64 bits. IDE desarrollo: Eclipse 201906
 
 
