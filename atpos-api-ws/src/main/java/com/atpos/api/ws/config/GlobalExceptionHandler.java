@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public final ResponseEntity<ResponseDTO> handleValidationExceptions(final MethodArgumentNotValidException e) {
 
-        log.error(SERVER_ERROR_MESSAGE  + Utils.getStackTrace(e) + SERVER_ERROR_MESSAGE + e.getMessage());
+        log.error(SERVER_ERROR_MESSAGE + " " + Utils.getStackTrace(e) + SERVER_ERROR_MESSAGE + " " + e.getMessage());
 
         String error = e.getBindingResult()
                 .getAllErrors().stream()
@@ -49,13 +49,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler({RuntimeException.class })
     public final ResponseEntity<ResponseDTO> handleGeneralException(final Exception e) {
-        log.error(SERVER_ERROR_MESSAGE  + Utils.getStackTrace(e) + SERVER_ERROR_MESSAGE + e.getMessage());
+        log.error(SERVER_ERROR_MESSAGE + " "  + Utils.getStackTrace(e) + SERVER_ERROR_MESSAGE + " " + e.getMessage());
         return buildFailure(SERVER_ERROR_CODE, SERVER_ERROR_MESSAGE, e.getMessage());
     }
 
     @ExceptionHandler({IpInvalidityException.class, ChecksumInvalidityException.class})
     public final ResponseEntity<ResponseDTO> handleAppRuntimeException(final Exception e) {
-        log.error(SERVER_ERROR_MESSAGE  + Utils.getStackTrace(e) + SERVER_ERROR_MESSAGE + e.getMessage());
+        log.error(SERVER_ERROR_MESSAGE  + " " + Utils.getStackTrace(e) + SERVER_ERROR_MESSAGE + " " + e.getMessage());
         return buildFailure(BAD_PROCESS_CODE, e.getMessage(), null);
     }
 

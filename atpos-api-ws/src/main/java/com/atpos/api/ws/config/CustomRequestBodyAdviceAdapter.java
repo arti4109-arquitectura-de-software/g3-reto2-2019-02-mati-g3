@@ -4,6 +4,7 @@ package com.atpos.api.ws.config;
 import com.atpos.api.business.service.impl.IpVerifyServiceImpl;
 import com.atpos.api.commons.exception.ChecksumInvalidityException;
 import com.atpos.api.commons.exception.IpInvalidityException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
@@ -18,6 +19,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 @ControllerAdvice
+@Slf4j
 public class CustomRequestBodyAdviceAdapter extends RequestBodyAdviceAdapter {
 
     @Autowired
@@ -39,9 +41,6 @@ public class CustomRequestBodyAdviceAdapter extends RequestBodyAdviceAdapter {
 
         String ip = getClientIP();
 
-        if (ipVerifyServiceImpl.isBlocked(ip)) {
-            throw new IpInvalidityException("Blocked IP");
-        }
 
         String checksum = getChecksum();
 
@@ -55,6 +54,14 @@ public class CustomRequestBodyAdviceAdapter extends RequestBodyAdviceAdapter {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+
+        log.info("CheckSum Client --> " + checksum);
+        log.info("CheckSum Body   --> " + bodyChecksum);
+
+        if (ipVerifyServiceImpl.isBlocked(ip)) {
+            throw new IpInvalidityException("Blocked IP");
+        }
+
 
         if(!bodyChecksum.equalsIgnoreCase(checksum)){
             ipVerifyServiceImpl.ipFailed(ip);

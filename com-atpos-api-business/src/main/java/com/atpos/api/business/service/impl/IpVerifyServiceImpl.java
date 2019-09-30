@@ -49,7 +49,7 @@ public class IpVerifyServiceImpl  implements IpVerifyService {
         try {
             boolean isBlocked = attemptsCache.get(ip) >= MAX_ATTEMPT;
             if(isBlocked){
-                log.debug("The IP --> " + ip + " is Blocked");
+                log.error("The IP --> " + ip + " is Blocked");
             }
             return isBlocked;
         } catch (ExecutionException e) {
